@@ -19,12 +19,12 @@ int main() {
     }
 
     for(int i = 0; i < col; i++) {
+        if(isFilled == true) break;
         for(int j = 0; j < row; j++) {
-            if(board[i][j] == '_') {
-                if(isFilled == false) break;
-                else {
-                    scanf("%c", &board[i][j]);
-                }
+            if(board[i][j] == '_' && isFilled == false) {
+                scanf(" %c", &board[i][j]);
+                isFilled = true;
+                break;
             }
         }
     }

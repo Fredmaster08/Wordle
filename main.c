@@ -1,43 +1,27 @@
 
 #include <stdio.h>
-#include <stdbool.h>
+
+#define MAX_ROWS 6
+#define MAX_LETTERS 5
 
 int main() {
-    
-    int col = 6;
-    int row = 5;
 
-    char board[col][row];
-    char secret_word = '\0';
+    char board[MAX_ROWS][MAX_LETTERS];
+    char input[MAX_ROWS][MAX_LETTERS];
 
-    bool isFilled = false;
+    while(1) {
 
-    for(int i = 0; i < col; i++) {
-        for(int j = 0; j < col; j++) {
-            board[i][j] = '_';
-        }
-    }
-
-    for(int i = 0; i < col; i++) {
-        if(isFilled == true) break;
-        for(int j = 0; j < row; j++) {
-            if(board[i][j] == '_' && isFilled == false) {
-                scanf(" %c", &board[i][j]);
-                isFilled = true;
-                break;
+        for (int i = 0; i < MAX_ROWS; i++) {
+            for (int j = 0; j < MAX_LETTERS; j++) {
+                board[i][j] = '_';
+                printf("%c ", board[i][j]);
+                board[i][j] = *input[i];
             }
+            fgets(*input, sizeof(input), stdin);
+            printf("\n");
         }
+
     }
-
-
-    for(int i = 0; i < col; i++) {
-        for(int j = 0; j < col; j++) {
-            printf("%c ", board[i][j]);
-        }
-        printf("\n");
-    }
-
-
 
     return 0;
 }
